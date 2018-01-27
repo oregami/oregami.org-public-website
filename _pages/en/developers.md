@@ -2,6 +2,8 @@
 layout: page
 title: Developers
 permalink: /en/developers
+language: en
+seq: 50
 ---
 
 System Architecture

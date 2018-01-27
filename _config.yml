@@ -27,6 +27,9 @@ url: "" # the base hostname & protocol for your site, e.g. http://example.com
 twitter_username: sebeichholz
 github_username:  sebeichholz
 
+#permalink: pretty
+#permalink: /blog/:year/:month/:day/:title/
+
 # Build settings
 markdown: kramdown
 plugins:
@@ -37,14 +40,25 @@ plugins:
 include: ['_pages']
 
 collections:
-  - my_pages
+  posts_de:
+    output: true
+    permalink: /blog/de/:year/:title
+  posts_en:
+    output: true
+    permalink: /blog/en/:year/:title
+
 
 defaults:
   - scope:
-      path: "_pages"
-      type: my_pages
+      path: ""
+      type: posts_de
     values:
-      layout: page
+      language: de
+  - scope:
+      path: ""
+      type: posts_en
+    values:
+      language: en
 
 # Exclude from processing.
 # The following items will not be processed, by default. Create a custom list

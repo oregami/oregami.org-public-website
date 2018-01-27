@@ -1,9 +1,16 @@
 <header class="site-header" role="banner">
 
+
   <div class="wrapper">
+    <div class="languages">
+      <a href="/en"><img border="0" src="{{ "/assets/images/en.png" | absolute_url }}"/></a>
+      <a href="/de"><img border="0" src="{{ "/assets/images/de.png" | absolute_url }}"/></a>
+    </div>
     {% assign default_paths = site.pages | map: "path" %}
     {% assign page_paths = site.header_pages | default: default_paths %}
-    <a class="site-title" rel="author" href="{{ "/" | relative_url }}">{{ site.title | escape }}</a>
+    {% assign main_url_with_language = '/' | append: page.language %}
+
+    <a class="site-title" rel="author" href="{{ main_url_with_language | relative_url }}/">{{ site.title | escape }}</a>
     <!--
     <a class="site-subtitle" rel="author" href="{{ "/" | relative_url }}">{{ site.subtitle | escape }}</a>
   -->
@@ -20,14 +27,28 @@
           </span>
         </label>
 
+        {% assign pages = site.pages | sort:"seq"  %}
+
+        <div class="trigger">
+        {% for my_page in pages %}
+          {% if my_page.title and my_page.language == page.language %}
+          <a class="page-link" href="{{ my_page.url | relative_url }}">{{ my_page.title | escape }}</a>
+          {% endif %}
+        {% endfor %}
+        </div>
+
+<!--
         <div class="trigger">
           {% for path in page_paths %}
             {% assign my_page = site.pages | where: "path", path | first %}
-            {% if my_page.title %}
-            <a class="page-link" href="{{ my_page.url | relative_url }}">{{ my_page.title | escape }}</a>
+            {% if my_page.title and my_page.language == page.language %}
+              <a class="page-link" href="{{ my_page.url | relative_url }}">{{ my_page.title | escape }}</a>
+              {{ my_page.seq }}
             {% endif %}
           {% endfor %}
         </div>
+-->
+
       </nav>
     {% endif %}
   </div>

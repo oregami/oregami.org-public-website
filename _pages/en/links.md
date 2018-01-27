@@ -2,6 +2,8 @@
 layout: page
 title: Links
 permalink: /en/links
+language: en
+seq: 60
 ---
 
 Friends

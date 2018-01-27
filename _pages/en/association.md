@@ -2,6 +2,8 @@
 layout: page
 title: Association
 permalink: /en/association
+language: en
+seq: 40
 ---
 
 Purpose of our Association

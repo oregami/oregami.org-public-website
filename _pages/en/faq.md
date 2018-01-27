@@ -2,6 +2,8 @@
 layout: page
 title: FAQ
 permalink: /en/faq
+language: en
+seq: 30
 ---
 
 ### What does Oregami mean?

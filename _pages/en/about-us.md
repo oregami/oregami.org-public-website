@@ -2,6 +2,8 @@
 layout: page
 title: About us
 permalink: /en/about-us
+language: en
+seq: 10
 ---
 
 Mission

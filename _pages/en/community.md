@@ -2,6 +2,8 @@
 layout: page
 title: Community
 permalink: /en/community
+language: en
+seq: 20
 ---
 
 First things first: **You are part of the Oregami community!**  
