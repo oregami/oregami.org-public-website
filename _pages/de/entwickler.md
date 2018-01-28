@@ -9,9 +9,10 @@ seq: 50
 System-Architektur
 ------------------
 
-![](images/java.png) Wir verwenden **Java** als Programmiersprache. Die kurze Begründung dafür lautet: Java ist seit Jahren für unzählbare "Enterprise-Anwendungen" im Einsatz. Wir sind daher sicher, dass Java auch für unsere Zwecke sinnvoll ist.
+![]({{ "/assets/images/java.png" | absolute_url }}){:width="40px"}
+Wir verwenden **Java** als Programmiersprache.
 
-Für die Speicherung sämtlicher Daten (z.B. Spiele-Namen und Eigenschaften) benutzen wir [Java Persistence API](http://de.wikipedia.org/wiki/Java_Persistence_API) (JPA) zusammen mit [Hibernate](http://www.hibernate.org/) als Persistenz-Framework. Die Abhängigkeiten der zu verwendeten Java-Bibliotheken werden über [Maven](http://maven.apache.org) realisiert.
+Die kurze Begründung dafür lautet: Java ist seit Jahren für unzählbare "Enterprise-Anwendungen" im Einsatz. Wir sind daher sicher, dass Java auch für unsere Zwecke sinnvoll ist.
 
 Nach einigen Gehversuchen mit [Dropwizard](http://dropwizard.oi/) haben wie die Entwicklung auf [Spring Boot](https://projects.spring.io/spring-boot/) umgestellt. Für den gesamten Entwicklungsprozess möchten wir die Konzepte des [Domain Driven Design](https://de.wikipedia.org/wiki/Domain-driven_Design) berücksichtigen. Als Gesamt-Systemarchitektur streben wir etwas wie eine [Hexagonale Architektur](https://www.maibornwolff.de/blog/von-schichten-zu-ringen-hexagonale-architekturen-erklaert) an.
 
