@@ -8,15 +8,34 @@ $base-font-weight: 400 !default;
 $small-font-size:  $base-font-size * 0.875 !default;
 $base-line-height: 1.5 !default;
 
-$spacing-unit:     30px !default;
+$spacing-unit:     20px !default;
 
 $text-color:       #111 !default;
 $background-color: #fdfdfd !default;
-$brand-color:      #2a7ae2 !default;
+$brand-color:      rgba(0, 142, 59, 1) !default;
 
+$grey-color-white: white !default;
 $grey-color:       #828282 !default;
 $grey-color-light: lighten($grey-color, 40%) !default;
 $grey-color-dark:  darken($grey-color, 25%) !default;
+
+
+/* Coolors Exported Palette - coolors.co/009e27-008e3b-007739-006013-004409 */
+
+/* HSL */
+$color1: hsla(135%, 100%, 31%, 1);
+$color2: hsla(145%, 100%, 28%, 1);
+$color3: hsla(149%, 100%, 23%, 1);
+$color4: hsla(132%, 100%, 19%, 1);
+$color5: hsla(128%, 100%, 13%, 1);
+
+/* RGB */
+$color1: rgba(0, 158, 39, 1);
+$color2: rgba(0, 142, 59, 1);
+$color3: rgba(0, 119, 57, 1);
+$color4: rgba(0, 96, 19, 1);
+$color5: rgba(0, 68, 9, 1);
+
 
 $table-text-align: left !default;
 

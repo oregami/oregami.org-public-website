@@ -94,12 +94,13 @@ a {
   text-decoration: none;
 
   &:visited {
-    color: darken($brand-color, 15%);
+    /*color: darken($brand-color, 15%);*/
+    text-decoration: none;
   }
 
   &:hover {
     color: $text-color;
-    text-decoration: underline;
+    text-decoration: none;
   }
 
   .social-media-list &:hover {
@@ -199,14 +200,14 @@ pre {
     width: 16px;
     height: 16px;
     display: inline-block;
-    fill: #{$grey-color};
+    fill: #{$grey-color-white};
     padding-right: 5px;
     vertical-align: text-top;
 }
 
 .social-media-list {
   li + li {
-    padding-top: 5px;
+    padding-top: 2px;
   }
 }
 

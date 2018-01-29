@@ -6,9 +6,6 @@ language: de
 seq: 20
 ---
 
-Community
----------
-
 Das Wichtigste zuerst: **Du bist Teil der Oregami-Community!**  
 Wir arbeiten nicht im Verborgenen, sondern sind ein **Gemeinschafts-Projekt**, an dem sich jeder beteiligen kann.  
 

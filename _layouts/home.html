@@ -9,12 +9,18 @@ layout: default
 
   {{ content }}
 
-  {% if site.posts.size > 0 %}
+  {% assign psts = site.posts_de %}
+  {% if page.language == "en" %}
+    {% assign psts = site.posts_en %}
+  {% endif %}
+
+  {% if psts.size > 0 %}
   <h2 class="post-list-heading">{{ page.list_title | default: "Posts" }}</h2>
     <ul class="post-list">
-      {% for post in site.posts %}
+    {% assign sorted = psts | sort: 'date' | reverse %}
+    {% for post in sorted  %}
         <li>
-          {% assign date_format = site.minima.date_format | default: "%b %-d, %Y" %}
+          {% assign date_format = "%F" %}
           <span class="post-meta">{{ post.date | date: date_format }}</span>
 
           <h3>
@@ -26,5 +32,4 @@ layout: default
 
     <p class="rss-subscribe">subscribe <a href="{{ "/feed.xml" | relative_url }}">via RSS</a></p>
   {% endif %}
-
 </div>
