@@ -1,7 +1,7 @@
 ---
 layout: default
 language: de
-permalink: /de
+permalink: /de/
 ---
 
 {% if site.posts_de.size > 0 %}

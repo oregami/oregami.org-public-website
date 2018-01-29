@@ -10,7 +10,7 @@
     {% assign page_paths = site.header_pages | default: default_paths %}
     {% assign main_url_with_language = '/' | append: page.language %}
 
-    <a class="site-title" rel="author" href="{{ main_url_with_language | relative_url }}">{{ site.title | escape }}</a>
+    <a class="site-title" rel="author" href="{{ main_url_with_language | relative_url }}/">{{ site.title | escape }}</a>
     <!--
     <a class="site-subtitle" rel="author" href="{{ "/" | relative_url }}">{{ site.subtitle | escape }}</a>
   -->
