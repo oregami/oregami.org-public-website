@@ -83,9 +83,10 @@
     top: 9px;
     right: $spacing-unit / 2;
     background-color: $background-color;
-    border: 1px solid $grey-color-light;
+    border: 2px solid $color4;
     border-radius: 5px;
     text-align: right;
+    color: black;
 
     label[for="nav-trigger"] {
       display: block;
@@ -123,6 +124,7 @@
     .page-link {
       display: block;
       padding: 5px 10px;
+      color: $color5;
 
       &:not(:last-child) {
         margin-right: 0;
@@ -168,7 +170,7 @@
 
 .footer-col {
   float: left;
-  margin-bottom: $spacing-unit / 200;
+  margin-bottom: $spacing-unit / 20;
   padding-left: $spacing-unit / 2;
 }
 
