@@ -35,7 +35,6 @@ github_username:  sebeichholz
 # Build settings
 markdown: kramdown
 plugins:
-  - jekyll-feed
   - jekyll-seo-tag
 
 
