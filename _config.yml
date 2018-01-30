@@ -17,6 +17,8 @@ title: Oregami.org
 subtitle: Open registry of game information
 email: team@oregami.org
 
+excerpt_separator: <!--more-->
+
 social_sites:
   twitter: oregami_org
   facebook: Oregami.org

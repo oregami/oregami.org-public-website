@@ -20,12 +20,20 @@ layout: default
     {% assign sorted = psts | sort: 'date' | reverse %}
     {% for post in sorted  %}
         <li>
-          {% assign date_format = "%F" %}
-          <span class="post-meta">{{ post.date | date: date_format }}</span>
 
-          <h3>
+          <h3 style="padding-bottom: 0px;margin-bottom: 0px;">
             <a class="post-link" href="{{ post.url | relative_url }}">{{ post.title | escape }}</a>
           </h3>
+          {% assign date_format = "%F" %}
+          <span class="post-meta">{{ post.date | date: date_format }}</span>
+          {% assign ex = post.content | split: site.excerpt_separator %}
+          {% if ex[1].size > 1 %}
+            <p>{{ ex[0] }}
+          {% else %}
+            <p>{{ post.content | truncatewords: 70 }}
+          {% endif %}
+          <strong><a href="{{ post.url | relative_url }}">more</a></strong>
+          </p>
         </li>
       {% endfor %}
     </ul>
