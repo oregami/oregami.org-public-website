@@ -4,10 +4,9 @@ title: Entwickler
 permalink: /de/entwickler
 language: de
 seq: 50
+published: true
 ---
 
-System-Architektur
-------------------
 
 ![]({{ "/assets/images/java.png" | absolute_url }}){:width="40px"}
 Wir verwenden **Java** als Programmiersprache.
