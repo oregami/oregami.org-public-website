@@ -4,10 +4,8 @@ title: Developers
 permalink: /en/developers
 language: en
 seq: 50
+published: true
 ---
-
-System Architecture
--------------------
 
 ![]({{ "/assets/images/java.png" | absolute_url }}){:width="40px"}
 We are using **Java** as our programming language.
