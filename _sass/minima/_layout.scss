@@ -217,6 +217,9 @@
  */
 .page-content {
   padding: $spacing-unit 0;
+}
+
+.page-content * p {
   text-align: justify;
 }
 
@@ -269,7 +272,6 @@
 
 .post-content {
   margin-bottom: $spacing-unit;
-  text-align: justify;
 
   h2 {
     @include relative-font-size(1.6);
@@ -294,4 +296,8 @@
       @include relative-font-size(1.05);
     }
   }
+}
+
+.e-content {
+  text-align: justify;
 }
