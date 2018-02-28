@@ -1,10 +1,10 @@
 ---
 layout: post
-title: Spieledatenbanken-News 12/2017
-date: '2018-02-26T21:33:00.000+01:00'
+title: Spieledatenbanken-News 1/2017
+date: '2017-11-29T21:33:00.000+01:00'
 author: MZ per X
 tags:
-modified_time: '2017-12-25T08:21:29.326+01:00'
+modified_time: '2017-12-29T08:21:29.326+01:00'
 ---
 Werfen wir einen weiteren Blick auf neue Entwicklungen in der Welt der Videospiel-Datenbanken.
 
