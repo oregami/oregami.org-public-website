@@ -23,6 +23,7 @@ social_sites:
   twitter: oregami_org
   facebook: Oregami.org
   github: oregami
+  discord: yXWjzXc
 
 baseurl: "" # the subpath of your site, e.g. /blog
 url: "" # the base hostname & protocol for your site, e.g. http://example.com
