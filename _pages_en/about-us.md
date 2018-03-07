@@ -42,6 +42,6 @@ Detailed information about all the collaborators can be retrieved from our respe
 
 Please use the [public board](https://forum.oregami.org/viewforum.php?f=38){:target="_blank"} of our [forums](https://forum.oregami.org){:target="_blank"} for questions and comments regarding our project.
 
-Furthermore, we maintain a [Discord](https://discordapp.com/){:target="_blank"} channel for direct contact.
+Furthermore, we maintain a [Discord](https://discord.gg/yXWjzXc){:target="_blank"} channel for direct contact.
 
 If there's anything that shall not be subject to public consumption, please send it to gene@oregami.org.
