@@ -42,6 +42,6 @@ Nähere Informationen zu allen Mitstreitern gibt es auf der entsprechenden Wiki-
 
 Für Fragen und Bemerkungen zu unserem Projekt kann der [öffentliche Bereich](https://forum.oregami.org/viewforum.php?f=37){:target="_blank"} unseres [Forums](https://forum.oregami.org/){:target="_blank"} genutzt werden.  
 
-Außerdem unterhalten wir einen [Discord-Kanal](https://discordapp.com/){:target="_blank"} für den direkten Kontakt.
+Außerdem unterhalten wir einen [Discord-Kanal](https://discord.gg/yXWjzXc){:target="_blank"} für den direkten Kontakt.
 
 Dinge, die nicht für die Öffentlichkeit bestimmt sind, können an gene\[at\]oregami.org gesendet werden.
