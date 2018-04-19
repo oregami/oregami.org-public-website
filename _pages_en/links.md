@@ -40,9 +40,9 @@ Goal of the project is to relive the charme of older games and document everythi
 
 **MobyGames** is one of the oldest, if not the oldest, video game documentation project at the Internet. The pages exist since 1999 and consist of comprehensive, very well analyzable information about more than 80,000 games on more than 200 platforms.
 
-Because MobyGames is so old, many gaming experts have gathered there over the years and entered much information on older and obscure video games. That's why the interested user can, exemplary, take a deeper look into the colorful world of Japanese and Chinese video gaming. [www.mobygames.com]
+Because MobyGames is so old, many gaming experts have gathered there over the years and entered much information on older and obscure video games. That's why the interested user can, exemplary, take a deeper look into the colorful world of Japanese and Chinese video gaming. 
 
-(http://www.mobygames.com){:target="_blank"}
+[www.mobygames.com](http://www.mobygames.com){:target="_blank"}
 
 
 
