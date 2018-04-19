@@ -24,7 +24,7 @@ In 2010 a new section of the site named "Kultpower Archive" was founded in order
 
  [![TheLegacy-Logo]({{ "/assets/images/thelegacy_logo.png" | absolute_url }} "TheLegacy-Logo")](http://www.thelegacy.de){:target="_blank"}
 
-**TheLegacy** is a nostalgic video game museum. More than 29,000 games dating from 1971 to today are displayed here, and lure the user to promenade and stroll around the halls of the museum. 
+**TheLegacy** is a nostalgic video game museum. Around 40,000 games of ~all systems dating from 1971 to today are displayed here, and lure the user to promenade and stroll around the halls of the museum. 
 
 The pages feature a broad spectrum of video game information like covers, screen shots, game music, facts and figures, ratings, hints and reviews. 
 
@@ -50,7 +50,7 @@ Because MobyGames is so old, many gaming experts have gathered there over the ye
 
 As the name suggests, the **Online Games Datenbank** (OGDB) is a Internet database with the sole purpose of collecting, archiving and publishing numerous information about computer and video games.
 
-This project was founded by the team of Blood-is-Red.de, a site dedicated to censorship in gaming.
+This project was founded by the team of Blood-is-Red.de, a site dedicated to censorship in gaming, and offers currently information about over 45,000 games.
 
 The database is aimed at German-speaking gaming enthusiasts and is designed to conveniently publish comprehensive information about game releases, their differences and traits, and censorship and youth protection in them. There is a powerful collection tracker included, too.
 
@@ -74,7 +74,7 @@ And they did quite achieve their goals. Meanwhile, RetroCollect has become a ser
 
 The **IGDB** ("Internet Game Database") is a Swedish project trying to recreate the success of the Internet Movie Database (IMDB.com) for games.
 
-The guys behind this site have scored some funding which enables them to work full time on it, so the development speed is astounding. They also made their first connections to the gaming industry by introducing verified profiles for gaming professionals.
+The guys behind this site have scored some funding which enables them to work full time on it, so the development speed is astounding. They also made good connections to the gaming industry by introducing verified profiles for gaming professionals.
 
 Promising indeed, and not just by the familiar naming, so let's see where this is headed!  
 
