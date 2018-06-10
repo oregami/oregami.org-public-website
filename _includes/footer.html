@@ -22,6 +22,20 @@
       <div class="footer-col footer-col-2">
         {% include social.html %}
       </div>
+        <div>
+            {% if page.language == "en" %}
+            <a href="{{ page.language | append: '/privacy' | relative_url }}">Privacy policy</a>
+            <br/>
+            <a href="{{ page.language | append: '/impress' | relative_url }}">Impress</a>
+            {% endif %}
+
+            {% if page.language == "de" %}
+            <a href="{{ page.language | append: '/datenschutz' | relative_url }}">Datenschutzerklärung</a>
+            <br/>
+            <a href="{{ page.language | append: '/impressum' | relative_url }}">Impressum</a>
+            {% endif %}
+
+        </div>
 
     </div>
 

@@ -31,7 +31,7 @@
 
         <div class="trigger">
         {% for my_page in pages %}
-          {% if my_page.title and my_page.language == page.language %}
+          {% if my_page.title and my_page.language == page.language and my_page.seq > 0 %}
           <a class="page-link" href="{{ my_page.url | relative_url }}">{{ my_page.title | escape }}</a>
           {% endif %}
         {% endfor %}
