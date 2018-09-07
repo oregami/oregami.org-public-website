@@ -1,0 +1,232 @@
+---
+layout: post
+title: Entwickler Tagebuch September 2018
+date: '2018-09-07T19:31:00.000'
+author: Sebastian Eichholz
+---
+
+Seit meinem letzten Blog-Post zum Thema Entwicklung unserer offenen Spieledatenbank ist nun schon mehr als ein Jahr vergangen. Das bedeutet aber nicht, dass ich nicht vorangekommen wäre. Daher möchte ich euch heute mal wieder vom aktuellen Stand der Entwicklung berichten.
+<br><br>
+In den letzten 15 Monaten habe ich versucht, unsere Spieledatenbank nach den Prinzipien des Domain Driven Design (DDD) neu zu durchdenken. Kurz gesagt konzentriert man sich dabei auf fachliche Kernbereiche oder Kontexte (DDD: "Bounded Contexts") der geplanten Anwendung. Diese sind dann bei der Umsetzung relativ lose untereinander gekoppelt, so dass jeder einzelne Kontext die eigene Fach-Logik komplett selber und relativ unabhängig umsetzen kann. <!--more--> Das macht die sinnvolle und effiziente Entwicklung von großen, komplexen Anwendungen überhaupt erst langfristig möglich. Für Oregami habe ich einige dieser Kontexte identifiziert und die groben Beziehungen untereinander in einer sogenannten "Context Map" dargestellt:
+
+<p style="text-align: center;">
+<img src="http://localhost/assets/images/blog/2018-09/2018-08_contextmap.png">
+</p>
+
+<br><br>
+
+Wie im letzten technischen Blog-Post beschrieben hatte ich mir zur technischen Umsetzung ebenfalls viele Gedanken gemacht und wollte mich dabei auf Dinge wie <a href="https://de.wikipedia.org/wiki/Event_Sourcing" target="_blank">Event Sourcing</a> und <a href="https://de.wikipedia.org/wiki/Command-Query-Responsibility-Segregation" target="_blank">CQRS</a> stützen. Genau das habe ich auch getan, und die Ergebnisse der ersten Programmierungen sind meiner Ansicht nach sehr vielversprechend. Doch dazu später mehr.
+
+<br><br>
+
+Eine sehr große Hilfe bei den bisherigen Arbeiten ist das <a href="http://www.axonframework.org/" target="_blank">Axon-Framework</a>. Es unterstützt genau jene Themen "Event Sourcing" und "CQRS", so dass man sich nahezu vollständig auf die Programmierung der fachlichen Dinge konzentrieren kann. Auch wenn so ein umfangreiches Framework natürlich vor dem Einsatz einiges an Einarbeitung erfordert - was auch einer der Gründe ist, weshalb ich so lange nichts von mir habe hören lassen (smile) - so konnte ich aber mitlwerweile doch einige Muster erarbeiten, die ich dann in der Zukunft immer wieder einsetzen werde.
+
+<br><br>
+
+
+Als den Bereich, in dem wir als erstes Daten erfassen wollen, haben wir die Spieleplattformen ausgewählt (englisch für uns "Platforms" oder "Gaming Environments"). Wenn man Informationen über Spieleplattformen vernünftig erfassen und speichern möchte, kommt man ziemlich schnell zu dem Thema "Internationalisierung der Plattform-Bezeichnungen". Hier wenden wir unsere Diskussionsergebnisse aus dem Bereich der Spiele-Titel an, die wir umfassend in einem <a href="https://www.oregami.org/blog/de/2017/gedanken-zur-internationalisierung-i18n" target="_blank">Blogbeitrag</a> beschrieben haben.
+
+<br><br>
+
+Da wir das Erfassen von Bezeichnungen an mehreren Stellen im System benötigen werden und es eine wichtige Rolle in der Oregami-Datenwelt spielt, haben wir es zu einem eigenen Kontext befördert, den wir fortan "Transliterated Strings" nennen. Während dieser Kontext selber für die Benutzer unserer Datenbank später nicht als einzelner, separat angebotener Bereich (z.B. in der Webseiten-Navigation) auftauchen wird, so werden seine Funktionen und Daten doch mehrfach innerhalb der anderen, öffentlichkeitswirksameren Bereiche verwendet werden. Innerhalb dieses Kontextes wird es z.B. möglich sein, zu jedem erfassten Titel (gilt auch für Spiele-Titel) Übersetzungen zu hinterlegen.
+
+<br><br>
+
+In der aktuellen Entwicklungsversion unserer Web-Anwendung habe ich erst einmal versucht, die beiden Kontexte "Platforms" und "TransliteratedStrings" zusammenzubringen. Denn darin wird zukünftig genau die Kunst bestehen: das Integrieren mehrerer Kontexte elegant zu lösen. Konkret bedeutet das für uns: Bezeichnungen werden als "<a href="https://de.wiktionary.org/wiki/transliterieren" target="_blank">transliterierte</a> Texte" im entsprechenden Kontext erfasst, und der Plattformen-Kontext verweist an den richtigen Stellen auf diese Texte.
+
+<br><br>
+
+Los geht es zunächst damit, dass man eine neue Plattform im System anlegt. Da die ganzen Bezeichnungen erst später sehr detailliert erfasst werden können, gibt man bei der Erstanlage nur einen Arbeitstitel an.
+
+
+<p style="text-align: left;">
+<img border="1" src="http://localhost/assets/images/blog/2018-09/2018-08_platforms_01.png">
+</p>
+
+
+Der Arbeitstitel wird später - wenn echte Bezeichnungen erfasst wurden - nicht mehr benötigt. Klar ist, dass der Anwender sich durch mehrere Schritte klicken muss, wenn er einen Titel hinzufügen möchte - das sind die Nebenwirkungen der Aufteilung der Fachlogik in zwei voneinander getrennte Kontexte. Der Weg könnte aus technischer Sicht so aussehen:
+
+<p style="text-align: left;">
+<img border="1" src="http://localhost/assets/images/blog/2018-09/2018-08_platforms_02.png">
+</p>
+
+Warum sucht das System nach der Eingabe des gewünschten Titels erst nach bereits vorhandenen Bezeichnungen? Wenn die gleiche Bezeichnung bereits vorhanden ist, dann sollte sie wiederverwendet werden. Falls nicht, wird die Bezeichnung eben neu angelegt.
+
+<br><br>
+
+Aus Anwendersicht spielt sich das Hinzufügen eines Titels dann so ab:
+
+<p style="text-align: left;">
+<img border="1" src="http://localhost/assets/images/blog/2018-09/2018-08_platforms_03.png">
+</p>
+<p style="text-align: left;">
+<img border="1" src="http://localhost/assets/images/blog/2018-09/2018-08_platforms_04.png">
+</p>
+<p style="text-align: left;">
+<img border="1" src="http://localhost/assets/images/blog/2018-09/2018-08_platforms_05.png">
+</p>
+<p style="text-align: left;">
+<img border="1" src="http://localhost/assets/images/blog/2018-09/2018-08_platforms_06.png">
+</p>
+<p style="text-align: left;">
+<img border="1" src="http://localhost/assets/images/blog/2018-09/2018-08_platforms_07.png">
+</p>
+
+
+
+Nun liegt also eine Plattform mit einem transliterierten Titel vor. Für diesen Titel kann man noch ergänzen, in welcher Region er in welcher Art und Weise verwendet wurde, also z.B. ist "Super Nintendo Entertainment System" ein Original-Titel in Europa:
+
+<p style="text-align: left;">
+<img border="1" src="http://localhost/assets/images/blog/2018-09/2018-08_platforms_08.png">
+</p>
+
+Nach zwei weiteren internationalisierten Titeln sieht es dann so aus:
+
+
+<p style="text-align: left;">
+<img border="1" src="http://localhost/assets/images/blog/2018-09/2018-08_platforms_09.png">
+</p>
+
+<p style="text-align: left;">
+<img border="1" src="http://localhost/assets/images/blog/2018-09/2018-08_platforms_10.png">
+</p>
+
+<br>
+Aber wir wären nicht Oregami, wenn das schon alles wäre.
+
+<br><br>
+
+Wie oben bereits erwähnt stützen wir alle Dateneingaben auf das Prinzip des Event Sourcing, d.h. jede Änderung von Daten wird als Event abgespeichert und nicht "wie früher" direkt in einer Datenbank, die auch für die Darstellung der gespeicherten Daten verwendet wird. Aber wo sind nun die Events unserer Dateneingaben? Hier:
+
+<br><br>
+
+<pre>{
+Identifier=fe82cbc3-e5f8-4493-9ad8-46ad5f6c8a88,
+SequenceNumber=0,
+Timestamp=2018-08-04T17: 52: 11.660Z,
+Payload=GamingEnvironmentCreatedEvent: {
+"newId": "a58086df-7986-4a89-900f-8a1c3c999429",
+"workingTitle": "SNES"
+},
+MetaData={
+"values": {
+  userId=2ac9dc76-88bc-479a-afcb-ae9a497d2457
+}
+}
+}{
+Identifier=e4e52d70-ffb0-478d-b850-74f519d1eb83,
+SequenceNumber=1,
+Timestamp=2018-08-04T17: 54: 12.354Z,
+Payload=TitleAddedEvent: {
+"newTitleId": "bee3380e-33be-45aa-ae6a-a804c51eafb5",
+"gamingEnvironmentId": "a58086df-7986-4a89-900f-8a1c3c999429",
+"transliteratedStringId": "f2376d65-50b6-4c10-862d-e81c6561ebe3"
+},
+MetaData={
+"values": {
+  userId=2ac9dc76-88bc-479a-afcb-ae9a497d2457
+}
+}
+}{
+Identifier=f2614294-9911-4d52-9ceb-a74349f3b0e3,
+SequenceNumber=2,
+Timestamp=2018-08-04T17: 54: 57.509Z,
+Payload=TitleUsageAddedEvent: {
+"region": "EUROPE",
+"gamingEnvironmentId": "a58086df-7986-4a89-900f-8a1c3c999429",
+"titleId": "bee3380e-33be-45aa-ae6a-a804c51eafb5",
+"titleType": "ORIGINAL_TITLE"
+},
+MetaData={
+"values": {
+  userId=2ac9dc76-88bc-479a-afcb-ae9a497d2457
+}
+}
+}{
+Identifier=2dd68c27-e7db-4ee4-95fa-4e77384ad3a3,
+SequenceNumber=3,
+Timestamp=2018-08-04T17: 56: 54.747Z,
+Payload=TitleAddedEvent: {
+"newTitleId": "abf8f90e-7392-4683-af4c-a0a82aad0459",
+"gamingEnvironmentId": "a58086df-7986-4a89-900f-8a1c3c999429",
+"transliteratedStringId": "d74a94b4-42b6-411e-bdd6-30ca7e4b7a74"
+},
+MetaData={
+"values": {
+  userId=2ac9dc76-88bc-479a-afcb-ae9a497d2457
+}
+}
+}{
+Identifier=b5bd484d-0416-4f05-a3ba-97a81f8061ed,
+SequenceNumber=4,
+Timestamp=2018-08-04T17: 57: 32.398Z,
+Payload=TitleUsageAddedEvent: {
+"region": "NORTH_AMERICA",
+"gamingEnvironmentId": "a58086df-7986-4a89-900f-8a1c3c999429",
+"titleId": "abf8f90e-7392-4683-af4c-a0a82aad0459",
+"titleType": "ORIGINAL_TITLE"
+},
+MetaData={
+"values": {
+  userId=2ac9dc76-88bc-479a-afcb-ae9a497d2457
+}
+}
+}{
+Identifier=0ce3cf63-3c27-46f9-92db-e4049ad08734,
+SequenceNumber=5,
+Timestamp=2018-08-04T17: 59: 15.602Z,
+Payload=TitleAddedEvent: {
+"newTitleId": "987042c3-2976-4a14-92f7-484965ddb7e9",
+"gamingEnvironmentId": "a58086df-7986-4a89-900f-8a1c3c999429",
+"transliteratedStringId": "c0ca5a26-4bae-49d3-8efb-1ccaec21f75a"
+},
+MetaData={
+"values": {
+  userId=2ac9dc76-88bc-479a-afcb-ae9a497d2457
+}
+}
+}{
+Identifier=16ced211-6475-4710-ab19-de7253a145c8,
+SequenceNumber=6,
+Timestamp=2018-08-04T17: 59: 24.585Z,
+Payload=TitleUsageAddedEvent: {
+"region": "JAPAN",
+"gamingEnvironmentId": "a58086df-7986-4a89-900f-8a1c3c999429",
+"titleId": "987042c3-2976-4a14-92f7-484965ddb7e9",
+"titleType": "ORIGINAL_TITLE"
+},
+MetaData={
+"values": {
+  userId=2ac9dc76-88bc-479a-afcb-ae9a497d2457
+}
+}
+}
+
+</pre>
+
+Bei näherer Betrachtung dieser Daten entdeckt man die folgenden Event-Bezeichnungen:
+
+<br><br>
+
+<ol>
+<li>GamingEnvironmentCreatedEvent
+</li><li>TitleAddedEvent
+</li><li>TitleUsageAddedEvent
+</li><li>(Nr.2 und 3 wiederholen sich für jeden Titel)
+</li></ol>
+
+<br>
+
+Jedes dieser Events beinhaltet alle Daten, die man benötigt, um den letztendlich entstandenen Zustand der Plattform daraus abzuleiten. Genau das ist das Prinzip des Event Sourcings. Aber warum betreiben wir nun diesen ganzen Aufwand? Warum aktualisieren wir nicht einfach direkt die bisherigen Daten mit den vom Benutzer neu eingegebenen Daten?
+
+<br><br>
+
+Bei Oregami legen wir großen Wert auf die Qualität der abgelegten Informationen. Diese hohe Qualität wollen wir u.a. dadurch erreichen, dass an möglichst vielen Stellen bei Dateneingaben eine Quelle angegeben werden muss: woher können wir sonst sicher sein, dass diese Daten tatsächlich der Realität entsprechen? Außerdem sollte es in unserem System später möglich sein, Dateneingaben innerhalb eines Überprüfungsprozesses zu validieren und in irgendeiner Art und Weise als "geprüft" zu markieren. Das Abspeichern jeder Eingabe in den daraus entstandenen Events wird uns genau diese Dinge ermöglichen.
+
+<br><br>
+
+Quellenangaben wird man z.B. den Events zuordnen können. Nach einer Überprüfung der Events werden wir die anzuzeigenden Daten zielgerichtet aktualisieren können, da wir diese nach dem CQRS-Prinzip komplett getrennt von den Events speichern. Es ist sogar möglich, mehrere sogenannte "Read models" anzulegen, so dass z.B. Prüfer den neuesten Datenstand inkl. aller ungeprüften Events einsehen können, während für die Öffentlichkeit nur überprüfte Daten sichtbar sein werden. Diese Dinge sind momentan noch Zukunftsmusik, aber mit dem aktuellen Entwicklungsstand haben wir die Basis dafür geschaffen.
+
+<br><br>
+
+Der aktuelle Stand kann übrigens auf <a href="https://dev.oregami.org" target="_blank">https://dev.oregami.org</a> ausprobiert werden (Login: User=user1, Passwort=password1). Die Daten werden aber noch nicht langfristig gespeichert, nach jeder Programmänderung gehen sie erstmal wieder verloren. Außerdem sei gesagt, dass das hinterlegte Datenmodell noch erweitert werden muss: wie in <a href="https://www.oregami.org/blog/de/2015/sprung-ins-plattform-chaos" target="_blank">diesem Beitrag</a> ausführlich beschrieben, bestehen Spiele-Plattformen bei uns aus Hardware- und Software-Plattformen, was aktuell noch nicht unterstützt wird. Aber anhand des aktuellen Standes konnte ich viele wichtige Dinge ausprobieren, erlernen und umsetzen.

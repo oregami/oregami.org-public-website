@@ -1,0 +1,226 @@
+---
+layout: post
+title: Developer Diary September 2018
+date: '2018-09-07T19:31:00.000'
+author: Sebastian Eichholz
+---
+
+It's been more than a year since my last blog post about developing our open game database. But that doesn't mean I haven't made any progress. Therefore I would like to report to you today once again about the current state of development.
+
+<br><br>
+In the last 15 months I have tried to rethink our game database according to the principles of Domain Driven Design (DDD). In short, the focus is on core areas or contexts (DDD: "bounded contexts") of the planned application. These are then loosely coupled to each other during implementation, so that each individual context can implement its own subject logic independently. <!--more--> This is what makes the sensible and efficient development of large, complex applications possible in the long term. For Oregami I identified some of these contexts and presented the rough relationships among them in a so-called "context map":
+
+<p style="text-align: center;">
+<img src="http://localhost/assets/images/blog/2018-09/2018-08_contextmap.png">
+</p>
+
+<br><br>
+
+As described in the last technical blog post I had also thought a lot about the technical implementation and wanted to rely on things like <a href="https://de.wikipedia.org/wiki/Event_Sourcing" target="_blank">Event Sourcing</a> and <a href="https://de.wikipedia.org/wiki/Command-Query-Responsibility-Segregation" target="_blank">CQRS</a>. That is exactly what I have done, and I think the results of the initial programming are very promising. But more about this later.
+
+<br><br>
+
+The <a href="http://www.axonframework.org/" target="_blank">Axon-Framework</a> is a great help in the work so far. It supports exactly the topics "Event Sourcing" and "CQRS", so that one can concentrate almost completely on the programming of the important things about games. Even if such an extensive framework naturally requires some training before use - which is one of the reasons why you haven't heard anything from myself for so long (smile) - I was able to work out some patterns that I will use again and again in the future meanwhile.
+
+<br><br>
+
+As the first area in which we want to collect data, we have selected "Platforms" or "Gaming Environments" for us. If you want to collect and store information about gaming platforms sensibly, you will soon come to the topic "Internationalization of platform names". Here we apply our discussion results from the field of game titles, which we have described comprehensively in a <a href="https://www.oregami.org/blog/en/2017/thoughts-about-internationalization-i18n" target="_blank">blog post</a>.
+
+<br><br>
+
+Since we will need to capture titles in several places in the system and it plays an important role in the Oregami data world, we have promoted it to its own context, which we will now call "Transliterated Strings". While this context itself will not appear for the user of our database as a single, separately offered area later (e.g. in the website navigation), its functions and data will nevertheless be used several times within the other, more public effective areas. Within this context, it will be possible, for example, to store translations for each title entered (also applies to game titles).
+
+<br><br>
+
+In the current development version of our web application, I first tried to combine the two contexts "Platforms" and "TransliteratedStrings". Because precisely this will be the art of the future: integrating several contexts elegantly. In practice this means that designations are recorded as "<a href="https://en.wikipedia.org/wiki/Transliteration" target="_blank">transliterated</a> texts" in the appropriate context, and the platform context refers to the transliterated texts in the right places.
+
+<br><br>
+
+The first step is to create a new platform in the system. Since all the descriptions can only be entered in great detail later, only one working title is specified for the initial creation.
+
+<p style="text-align: left;">
+<img border="1" src="http://localhost/assets/images/blog/2018-09/2018-08_platforms_01.png">
+</p>
+
+The working title is no longer required later - if real names have been entered. It is clear that the user has to click through several steps to add a title - these are the side effects of dividing the subject logic into two separate contexts. From a technical point of view, the path could look like this:
+
+<p style="text-align: left;">
+<img border="1" src="http://localhost/assets/images/blog/2018-09/2018-08_platforms_02.png">
+</p>
+
+Why does the system search for existing descriptions after entering the desired title? If the same name already exists, it should be reused. If not, the name is created.
+
+<br><br>
+
+From the user's point of view, this is how a title is added:
+
+<p style="text-align: left;">
+<img border="1" src="http://localhost/assets/images/blog/2018-09/2018-08_platforms_03.png">
+</p>
+<p style="text-align: left;">
+<img border="1" src="http://localhost/assets/images/blog/2018-09/2018-08_platforms_04.png">
+</p>
+<p style="text-align: left;">
+<img border="1" src="http://localhost/assets/images/blog/2018-09/2018-08_platforms_05.png">
+</p>
+<p style="text-align: left;">
+<img border="1" src="http://localhost/assets/images/blog/2018-09/2018-08_platforms_06.png">
+</p>
+<p style="text-align: left;">
+<img border="1" src="http://localhost/assets/images/blog/2018-09/2018-08_platforms_07.png">
+</p>
+
+Now we have a platform with a transliterated title. For this title you can add in which region it was used to which purpose, e.g. "Super Nintendo Entertainment System" is an original title in Europe:
+
+<p style="text-align: left;">
+<img border="1" src="http://localhost/assets/images/blog/2018-09/2018-08_platforms_08.png">
+</p>
+
+After two more internationalized titles it looks like this:
+
+<p style="text-align: left;">
+<img border="1" src="http://localhost/assets/images/blog/2018-09/2018-08_platforms_09.png">
+</p>
+
+<p style="text-align: left;">
+<img border="1" src="http://localhost/assets/images/blog/2018-09/2018-08_platforms_10.png">
+</p>
+
+<br>
+But we wouldn't be Oregami if that was all.
+
+<br><br>
+
+As mentioned above, we base all data input on the principle of event sourcing, i.e. every change to data is stored as an event and not "as before" directly in a database, which is also used to display the stored data. But where are the events of our data input? Here:
+
+<br><br>
+
+<pre>{
+Identifier=fe82cbc3-e5f8-4493-9ad8-46ad5f6c8a88,
+SequenceNumber=0,
+Timestamp=2018-08-04T17: 52: 11.660Z,
+Payload=GamingEnvironmentCreatedEvent: {
+"newId": "a58086df-7986-4a89-900f-8a1c3c999429",
+"workingTitle": "SNES"
+},
+MetaData={
+"values": {
+  userId=2ac9dc76-88bc-479a-afcb-ae9a497d2457
+}
+}
+}{
+Identifier=e4e52d70-ffb0-478d-b850-74f519d1eb83,
+SequenceNumber=1,
+Timestamp=2018-08-04T17: 54: 12.354Z,
+Payload=TitleAddedEvent: {
+"newTitleId": "bee3380e-33be-45aa-ae6a-a804c51eafb5",
+"gamingEnvironmentId": "a58086df-7986-4a89-900f-8a1c3c999429",
+"transliteratedStringId": "f2376d65-50b6-4c10-862d-e81c6561ebe3"
+},
+MetaData={
+"values": {
+  userId=2ac9dc76-88bc-479a-afcb-ae9a497d2457
+}
+}
+}{
+Identifier=f2614294-9911-4d52-9ceb-a74349f3b0e3,
+SequenceNumber=2,
+Timestamp=2018-08-04T17: 54: 57.509Z,
+Payload=TitleUsageAddedEvent: {
+"region": "EUROPE",
+"gamingEnvironmentId": "a58086df-7986-4a89-900f-8a1c3c999429",
+"titleId": "bee3380e-33be-45aa-ae6a-a804c51eafb5",
+"titleType": "ORIGINAL_TITLE"
+},
+MetaData={
+"values": {
+  userId=2ac9dc76-88bc-479a-afcb-ae9a497d2457
+}
+}
+}{
+Identifier=2dd68c27-e7db-4ee4-95fa-4e77384ad3a3,
+SequenceNumber=3,
+Timestamp=2018-08-04T17: 56: 54.747Z,
+Payload=TitleAddedEvent: {
+"newTitleId": "abf8f90e-7392-4683-af4c-a0a82aad0459",
+"gamingEnvironmentId": "a58086df-7986-4a89-900f-8a1c3c999429",
+"transliteratedStringId": "d74a94b4-42b6-411e-bdd6-30ca7e4b7a74"
+},
+MetaData={
+"values": {
+  userId=2ac9dc76-88bc-479a-afcb-ae9a497d2457
+}
+}
+}{
+Identifier=b5bd484d-0416-4f05-a3ba-97a81f8061ed,
+SequenceNumber=4,
+Timestamp=2018-08-04T17: 57: 32.398Z,
+Payload=TitleUsageAddedEvent: {
+"region": "NORTH_AMERICA",
+"gamingEnvironmentId": "a58086df-7986-4a89-900f-8a1c3c999429",
+"titleId": "abf8f90e-7392-4683-af4c-a0a82aad0459",
+"titleType": "ORIGINAL_TITLE"
+},
+MetaData={
+"values": {
+  userId=2ac9dc76-88bc-479a-afcb-ae9a497d2457
+}
+}
+}{
+Identifier=0ce3cf63-3c27-46f9-92db-e4049ad08734,
+SequenceNumber=5,
+Timestamp=2018-08-04T17: 59: 15.602Z,
+Payload=TitleAddedEvent: {
+"newTitleId": "987042c3-2976-4a14-92f7-484965ddb7e9",
+"gamingEnvironmentId": "a58086df-7986-4a89-900f-8a1c3c999429",
+"transliteratedStringId": "c0ca5a26-4bae-49d3-8efb-1ccaec21f75a"
+},
+MetaData={
+"values": {
+  userId=2ac9dc76-88bc-479a-afcb-ae9a497d2457
+}
+}
+}{
+Identifier=16ced211-6475-4710-ab19-de7253a145c8,
+SequenceNumber=6,
+Timestamp=2018-08-04T17: 59: 24.585Z,
+Payload=TitleUsageAddedEvent: {
+"region": "JAPAN",
+"gamingEnvironmentId": "a58086df-7986-4a89-900f-8a1c3c999429",
+"titleId": "987042c3-2976-4a14-92f7-484965ddb7e9",
+"titleType": "ORIGINAL_TITLE"
+},
+MetaData={
+"values": {
+  userId=2ac9dc76-88bc-479a-afcb-ae9a497d2457
+}
+}
+}
+
+</pre>
+
+A closer look at these data reveals the following event names:
+<br><br>
+
+<ol>
+<li>GamingEnvironmentCreatedEvent
+</li><li>TitleAddedEvent
+</li><li>TitleUsageAddedEvent
+</li><li>(Nr.2 und 3 wiederholen sich für jeden Titel)
+</li></ol>
+
+<br>
+
+Each of these events contains all the data needed to derive the final state of the platform. This is exactly the principle of event sourcing. But why are we making all this effort? Why don't we simply update the previous data directly with the new data entered by the user?
+
+<br><br>
+
+At Oregami we attach great importance to the quality of the information we store. One of the ways we want to achieve this high quality is by having to specify a source for as many things as possible when entering data: how else can we be sure that this data actually correspond to reality? In addition, it should later be possible in our system to validate data entries within a verification process and to mark them as "verified" in some way.
+
+<br><br>
+
+Saving each entry in the resulting events will enable us to do just that. Sources can be assigned to events, for example. After checking the events, we will be able to update the data to be displayed in a targeted manner, as we store them completely separated from the events according to the CQRS principle. It is even possible to create several so-called "read models", so that e.g. auditors can see the latest status including all unchecked events, while only checked data will be visible to the public. These things are still dreams of the future, but with the current state of development we have created the basis for it.
+
+<br><br>
+
+The current status can be tested at <a href="https://dev.oregami.org" target="_blank">https://dev.oregami.org</a> (Login: User=user1, Password=password1). However, the data will not be stored for a long time, after each program change they will be lost again. Furthermore, the stored data model still needs to be extended: as described in detail in <a href="https://www.oregami.org/blog/de/2015/sprung-ins-plattform-chaos" target="_blank">this article</a>, our game platforms consist of hardware and software platforms, which is currently not yet supported. But based on the current status I could try out, learn and implement many important things.
