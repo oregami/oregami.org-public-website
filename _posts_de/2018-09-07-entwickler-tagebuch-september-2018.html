@@ -10,7 +10,8 @@ Seit meinem letzten Blog-Post zum Thema Entwicklung unserer offenen Spieledatenb
 In den letzten 15 Monaten habe ich versucht, unsere Spieledatenbank nach den Prinzipien des Domain Driven Design (DDD) neu zu durchdenken. Kurz gesagt konzentriert man sich dabei auf fachliche Kernbereiche oder Kontexte (DDD: "Bounded Contexts") der geplanten Anwendung. Diese sind dann bei der Umsetzung relativ lose untereinander gekoppelt, so dass jeder einzelne Kontext die eigene Fach-Logik komplett selber und relativ unabhängig umsetzen kann. <!--more--> Das macht die sinnvolle und effiziente Entwicklung von großen, komplexen Anwendungen überhaupt erst langfristig möglich. Für Oregami habe ich einige dieser Kontexte identifiziert und die groben Beziehungen untereinander in einer sogenannten "Context Map" dargestellt:
 
 <p style="text-align: center;">
-<img src="http://localhost/assets/images/blog/2018-09/2018-08_contextmap.png">
+  <img src="{{ "/assets/images/blog/2018-09/2018-08_contextmap.png" | absolute_url }}">
+extmap.png">
 </p>
 
 <br><br>
@@ -40,14 +41,14 @@ Los geht es zunächst damit, dass man eine neue Plattform im System anlegt. Da d
 
 
 <p style="text-align: left;">
-<img border="1" src="http://localhost/assets/images/blog/2018-09/2018-08_platforms_01.png">
+<img border="1" src="{{ "/assets/images/blog/2018-09/2018-08_platforms_01.png" | absolute_url }}">
 </p>
 
 
 Der Arbeitstitel wird später - wenn echte Bezeichnungen erfasst wurden - nicht mehr benötigt. Klar ist, dass der Anwender sich durch mehrere Schritte klicken muss, wenn er einen Titel hinzufügen möchte - das sind die Nebenwirkungen der Aufteilung der Fachlogik in zwei voneinander getrennte Kontexte. Der Weg könnte aus technischer Sicht so aussehen:
 
 <p style="text-align: left;">
-<img border="1" src="http://localhost/assets/images/blog/2018-09/2018-08_platforms_02.png">
+  <img border="1" src="{{ "/assets/images/blog/2018-09/2018-08_platforms_02.png" | absolute_url }}">
 </p>
 
 Warum sucht das System nach der Eingabe des gewünschten Titels erst nach bereits vorhandenen Bezeichnungen? Wenn die gleiche Bezeichnung bereits vorhanden ist, dann sollte sie wiederverwendet werden. Falls nicht, wird die Bezeichnung eben neu angelegt.
@@ -57,19 +58,19 @@ Warum sucht das System nach der Eingabe des gewünschten Titels erst nach bereit
 Aus Anwendersicht spielt sich das Hinzufügen eines Titels dann so ab:
 
 <p style="text-align: left;">
-<img border="1" src="http://localhost/assets/images/blog/2018-09/2018-08_platforms_03.png">
+  <img border="1" src="{{ "/assets/images/blog/2018-09/2018-08_platforms_03.png" | absolute_url }}">
 </p>
 <p style="text-align: left;">
-<img border="1" src="http://localhost/assets/images/blog/2018-09/2018-08_platforms_04.png">
+  <img border="1" src="{{ "/assets/images/blog/2018-09/2018-08_platforms_04.png" | absolute_url }}">
 </p>
 <p style="text-align: left;">
-<img border="1" src="http://localhost/assets/images/blog/2018-09/2018-08_platforms_05.png">
+  <img border="1" src="{{ "/assets/images/blog/2018-09/2018-08_platforms_05.png" | absolute_url }}">
 </p>
 <p style="text-align: left;">
-<img border="1" src="http://localhost/assets/images/blog/2018-09/2018-08_platforms_06.png">
+  <img border="1" src="{{ "/assets/images/blog/2018-09/2018-08_platforms_06.png" | absolute_url }}">
 </p>
 <p style="text-align: left;">
-<img border="1" src="http://localhost/assets/images/blog/2018-09/2018-08_platforms_07.png">
+  <img border="1" src="{{ "/assets/images/blog/2018-09/2018-08_platforms_07.png" | absolute_url }}">
 </p>
 
 
@@ -77,18 +78,18 @@ Aus Anwendersicht spielt sich das Hinzufügen eines Titels dann so ab:
 Nun liegt also eine Plattform mit einem transliterierten Titel vor. Für diesen Titel kann man noch ergänzen, in welcher Region er in welcher Art und Weise verwendet wurde, also z.B. ist "Super Nintendo Entertainment System" ein Original-Titel in Europa:
 
 <p style="text-align: left;">
-<img border="1" src="http://localhost/assets/images/blog/2018-09/2018-08_platforms_08.png">
+  <img border="1" src="{{ "/assets/images/blog/2018-09/2018-08_platforms_08.png" | absolute_url }}">
 </p>
 
 Nach zwei weiteren internationalisierten Titeln sieht es dann so aus:
 
 
 <p style="text-align: left;">
-<img border="1" src="http://localhost/assets/images/blog/2018-09/2018-08_platforms_09.png">
+  <img border="1" src="{{ "/assets/images/blog/2018-09/2018-08_platforms_09.png" | absolute_url }}">
 </p>
 
 <p style="text-align: left;">
-<img border="1" src="http://localhost/assets/images/blog/2018-09/2018-08_platforms_10.png">
+  <img border="1" src="{{ "/assets/images/blog/2018-09/2018-08_platforms_10.png" | absolute_url }}">
 </p>
 
 <br>

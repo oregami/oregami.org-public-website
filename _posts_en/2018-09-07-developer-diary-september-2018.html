@@ -11,7 +11,7 @@ It's been more than a year since my last blog post about developing our open gam
 In the last 15 months I have tried to rethink our game database according to the principles of Domain Driven Design (DDD). In short, the focus is on core areas or contexts (DDD: "bounded contexts") of the planned application. These are then loosely coupled to each other during implementation, so that each individual context can implement its own subject logic independently. <!--more--> This is what makes the sensible and efficient development of large, complex applications possible in the long term. For Oregami I identified some of these contexts and presented the rough relationships among them in a so-called "context map":
 
 <p style="text-align: center;">
-<img src="http://localhost/assets/images/blog/2018-09/2018-08_contextmap.png">
+  <img src="{{ "/assets/images/blog/2018-09/2018-08_contextmap.png" | absolute_url }}">
 </p>
 
 <br><br>
@@ -39,13 +39,13 @@ In the current development version of our web application, I first tried to comb
 The first step is to create a new platform in the system. Since all the descriptions can only be entered in great detail later, only one working title is specified for the initial creation.
 
 <p style="text-align: left;">
-<img border="1" src="http://localhost/assets/images/blog/2018-09/2018-08_platforms_01.png">
+  <img border="1" src="{{ "/assets/images/blog/2018-09/2018-08_platforms_01.png" | absolute_url }}">
 </p>
 
 The working title is no longer required later - if real names have been entered. It is clear that the user has to click through several steps to add a title - these are the side effects of dividing the subject logic into two separate contexts. From a technical point of view, the path could look like this:
 
 <p style="text-align: left;">
-<img border="1" src="http://localhost/assets/images/blog/2018-09/2018-08_platforms_02.png">
+  <img border="1" src="{{ "/assets/images/blog/2018-09/2018-08_platforms_02.png" | absolute_url }}">
 </p>
 
 Why does the system search for existing descriptions after entering the desired title? If the same name already exists, it should be reused. If not, the name is created.
@@ -55,35 +55,35 @@ Why does the system search for existing descriptions after entering the desired 
 From the user's point of view, this is how a title is added:
 
 <p style="text-align: left;">
-<img border="1" src="http://localhost/assets/images/blog/2018-09/2018-08_platforms_03.png">
+  <img border="1" src="{{ "/assets/images/blog/2018-09/2018-08_platforms_03.png" | absolute_url }}">
 </p>
 <p style="text-align: left;">
-<img border="1" src="http://localhost/assets/images/blog/2018-09/2018-08_platforms_04.png">
+  <img border="1" src="{{ "/assets/images/blog/2018-09/2018-08_platforms_04.png" | absolute_url }}">
 </p>
 <p style="text-align: left;">
-<img border="1" src="http://localhost/assets/images/blog/2018-09/2018-08_platforms_05.png">
+  <img border="1" src="{{ "/assets/images/blog/2018-09/2018-08_platforms_05.png" | absolute_url }}">
 </p>
 <p style="text-align: left;">
-<img border="1" src="http://localhost/assets/images/blog/2018-09/2018-08_platforms_06.png">
+  <img border="1" src="{{ "/assets/images/blog/2018-09/2018-08_platforms_06.png" | absolute_url }}">
 </p>
 <p style="text-align: left;">
-<img border="1" src="http://localhost/assets/images/blog/2018-09/2018-08_platforms_07.png">
+  <img border="1" src="{{ "/assets/images/blog/2018-09/2018-08_platforms_07.png" | absolute_url }}">
 </p>
 
 Now we have a platform with a transliterated title. For this title you can add in which region it was used to which purpose, e.g. "Super Nintendo Entertainment System" is an original title in Europe:
 
 <p style="text-align: left;">
-<img border="1" src="http://localhost/assets/images/blog/2018-09/2018-08_platforms_08.png">
+  <img border="1" src="{{ "/assets/images/blog/2018-09/2018-08_platforms_08.png" | absolute_url }}">
 </p>
 
 After two more internationalized titles it looks like this:
 
 <p style="text-align: left;">
-<img border="1" src="http://localhost/assets/images/blog/2018-09/2018-08_platforms_09.png">
+  <img border="1" src="{{ "/assets/images/blog/2018-09/2018-08_platforms_09.png" | absolute_url }}">
 </p>
 
 <p style="text-align: left;">
-<img border="1" src="http://localhost/assets/images/blog/2018-09/2018-08_platforms_10.png">
+  <img border="1" src="{{ "/assets/images/blog/2018-09/2018-08_platforms_10.png" | absolute_url }}">
 </p>
 
 <br>
