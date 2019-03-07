@@ -13,7 +13,7 @@ We're not working in the dark, but are a community project where everyone can pa
 The central place where the Oregami community lives is our [message board](https://forum.oregami.org){:target="_blank"}. Every discussion is publicly viewable, but those who want to participate need to [register](https://forum.oregami.org/ucp.php?mode=register){:target="_blank"}. 
 
 Every registered user is allowed to post on the [board for open discussions](https://forum.oregami.org/viewforum.php?f=38){:target="_blank"}, but for posting on the boards with restricted editing rights manual activation is needed - but that's no big deal if you're showing some enthusiasm.
-Hint: Bookmark [this board link](http://forum.oregami.org/search.php?st=90&sk=t&sd=d&sr=topics&search_id=active_topics){:target="_blank"} \- it shows the active threads of the last days!  
+Hint: Bookmark [this board link](http://forum.oregami.org/search.php?st=90&sk=t&sd=d&sr=topics&search_id=active_topics){:target="_blank"} \- it shows the active threads of the last weeks!  
 
 For the documentation of our concepts and ideas we use the software Confluence by [Atlassian](http://atlassian.com/){:target="_blank"}. Our Confluence wiki can be found under [oregami.atlassian.net](https://oregami.atlassian.net/){:target="_blank"}.  
 
