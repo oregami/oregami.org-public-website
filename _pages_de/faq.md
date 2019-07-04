@@ -55,13 +55,13 @@ Um diese Ziele zu erreichen, wird sich Oregami in einigen Dingen grundlegend von
     
     Außerdem erlaubt es unsere offene Quellcodelizenz [GNU General Public License 3 (GPL3)](https://de.wikipedia.org/wiki/GNU_General_Public_License#GPL_Version_3){:target="_blank"}, dass unsere Hacker ihren Code bei anderen Projekten wiederverwenden können.
 
-### Frei und offen gibt es aber schon - wieso macht Ihr nicht einfach bei Wikipedia mit?
+### Frei und offen gibt es aber schon - wieso macht Ihr nicht einfach bei Wikidata mit?
 
-Die Wikipedia ist ein Projekt, das die Welt verändert hat und weiter verändern wird, kein Zweifel. Wir haben große Hochachtung vor dieser Leistung.
+[Wikimedia](https://www.wikimedia.org){:target="_blank"} ist ein Projekt, das die Welt verändert hat und weiter verändern wird, kein Zweifel. Wir haben große Hochachtung vor dieser Leistung. Warum also treten wir nicht einfach dem [Wikidata-Projekt für Videospiele](https://www.wikidata.org/wiki/Wikidata:WikiProject_Video_games/de){:target="_blank"} bei, anstatt an unserer eigenen Datenbank herumzuwerkeln?
 
-Die Wikipedia ist aber auch eine Weltdatenbank, die alle Daten aufnehmen können soll, die es auf der Welt gibt. Aus diesem Grund wird sie für spezielle Daten niemals so gut sein können wie ein spezialisiertes Projekt.
+Die einfache Antwort ist [Relevanz](https://www.wikidata.org/wiki/Wikidata:Notability/de){:target="_blank"}. Wir wollen das gesamte Universum der Videospieldaten dokumentieren, d.h. also auch Indie-Spiele, von Spielern selbst erstellte Spielinhalte oder gar Home-Brew-Spiele. Wir sind sicher, dass einige dieser Daten von den Wikidata-Relevanzregeln verboten wären.
 
-Die Wikipedia enthält zwar viele Daten zu Computer- und Videospielen, aber sie sind nur sehr begrenzt auswertbar. Wir bezweifeln, dass die Wikipedia jemals die Frage beantworten können wird, wieviele Rollenspiele im Zeitraum von 1995-1999 auf dem PC erschienen sind, die ein rundenbasiertes Kampfsystem haben. Und das ist noch eine einfache Frage.
+Und diese Einschränkung unseres Datenumfangs könnten wir nicht akzeptieren.
 
 ### Und welche Daten wollte Ihr alles in die Oregami-Datenbank aufnehmen?
 
