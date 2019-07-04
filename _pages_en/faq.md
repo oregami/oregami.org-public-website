@@ -57,13 +57,13 @@ In order to achieve these goals, Oregami will be, in many ways, substantially di
     
     Furthermore, our open source code license "[GNU General Public License 3 (GPL3)](https://en.wikipedia.org/wiki/GNU_General_Public_License#Version_3){:target="_blank"}" allows people to reuse their code within other projects as they see fit.
 
-### Free and open is already out there - so why not just join Wikipedia?
+### Free and open is already out there - so why not just join Wikidata?
 
-Wikipedia is a project that changed the world and continues to do so, no doubt about that. We stand in esteem looking at this accomplishment.
+[Wikimedia](https://www.wikimedia.org){:target="_blank"} is a project that changed the world and continues to do so, no doubt about that. We stand in esteem looking at this accomplishment. So why then not just join the [Wikidata video games project](https://www.wikidata.org/wiki/Wikidata:WikiProject_Video_games){:target="_blank"}, instead of fiddling around with our own project?
 
-Unfortunately, Wikipedia is also a world database created with the goal of swallowing all kinds of data. For this reason, Wikipedia will never be as comprehensive and complex as a specialized project can be.
+The simple answer is [notability](https://www.wikidata.org/wiki/Wikidata:Notability){:target="_blank"}. We want to document the whole universe of video game data, including indie games, user-created content, home-brew stuff. We are sure that some of this would be prohibited by Wikidata's notability rules.
 
-When it comes to computer and video games, Wikipedia contains many good information and data, but they're not really analyzable. We dispute whether the day will ever come when Wikipedia will answer the question of how many RPGs were released on the PC in the time frame of 1995-1999 that featured a turn-based battle system. And that's an easy question.
+And we could not accept this limitation of scope.
 
 ### And which data will be in the Oregami database?
 
